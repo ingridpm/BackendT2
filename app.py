@@ -2,6 +2,7 @@ from flask import Flask, request, jsonify
 import json
 from flask_cors import CORS, cross_origin
 from Funcion import Funcion
+import os 
 
 app = Flask(__name__)
 CORS(app)
@@ -30,4 +31,5 @@ def obtenerFunciones():
     return jsonify(json_funciones)
 
 if __name__ == '__main__':
-    app.run(debug=True,host='0.0.0.0',port=4000)
+    puerto = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0',port=puerto)
